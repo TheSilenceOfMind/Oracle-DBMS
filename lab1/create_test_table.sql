@@ -1,0 +1,20 @@
+DROP TABLE MY_TABLE;
+
+CREATE TABLE MY_TABLE(
+	id		NUMBER(5),
+	num		NUMBER(9), 
+	str		VARCHAR(20),
+	photo	BLOB,
+	num2	NUMBER(10),
+	birth	DATE,
+    CONSTRAINT MYTABLE_num2_id_PK PRIMARY KEY (num2, id)
+);
+
+
+INSERT INTO MY_TABLE
+(id, num, str, num2, birth)
+			SELECT 10, 11, 'first', 12, SYSDATE FROM dual
+UNION ALL	SELECT 20, 21, 'second', 22, SYSDATE FROM dual
+UNION ALL	SELECT 30, 31, 'first', 32, SYSDATE FROM dual;
+
+COMMIT;
